@@ -1,10 +1,10 @@
-# Project Title
+# Samaritan
 
-Samaritan - A Volunteering Based Application
+A Volunteering Based Application
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -19,7 +19,7 @@ Run the following command to run the project locally after cloning code.
 ```
 - `yarn install`
 - `yarn ios` to run on ios device
-- `yarn android`
+- `yarn android` to run on android device
 ```
 
 ### Expo Build
