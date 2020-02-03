@@ -19,6 +19,7 @@ import BackButton from '../components/BackButton';
 // Context
 import AppContext from '../contexts/AppContext';
 import Button from '../components/Button';
+import CancelButton from '../components/CancelButton';
 import FixedContainer from '../components/FixedContainer';
 
 interface Props {
@@ -108,7 +109,17 @@ const EventDetail: React.FC<Props> = ({ navigation }) => {
               </ScrollView>
             </View>
             <FixedContainer>
-              <Button text={'Attend Event'} onPress={e => e.preventDefault()} />
+              {ctxt.event.attending ? (
+                <CancelButton
+                  text={'Unattend Event'}
+                  onPress={() => ctxt.removeEvent(ctxt.event.id)}
+                />
+              ) : (
+                <Button
+                  text={'Attend Event'}
+                  onPress={() => ctxt.addEvent(ctxt.event.id)}
+                />
+              )}
             </FixedContainer>
           </View>
         </>

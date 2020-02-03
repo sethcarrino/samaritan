@@ -11,7 +11,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   },
   {
     id: 2,
@@ -25,7 +26,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   },
   {
     id: 3,
@@ -39,7 +41,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   },
   {
     id: 4,
@@ -53,7 +56,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   },
   {
     id: 5,
@@ -67,7 +71,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   },
   {
     id: 6,
@@ -81,7 +86,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   },
   {
     id: 7,
@@ -95,7 +101,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   },
   {
     id: 8,
@@ -109,7 +116,8 @@ const events = [
       state: 'NC',
       road: '1924 Capital Blvd',
       zip: '555555'
-    }
+    },
+    attending: false
   }
 ];
 

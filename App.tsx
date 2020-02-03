@@ -27,9 +27,9 @@ events.forEach((event: any, index: number) => {
 });
 
 const App: React.FC = () => {
-  const [events] = useState(dynamicDatedEvents);
+  const [events, setEvents] = useState(dynamicDatedEvents);
   const [event, setEvent] = useState({});
-  const [selectedEvents] = useState([]);
+  const [selectedEvents, setSelectedEvents] = useState([]);
 
   return (
     <AppProvider
@@ -40,6 +40,43 @@ const App: React.FC = () => {
         getEvent: eventId => {
           let filteredEvent = events.filter(e => e.id == eventId);
           setEvent(filteredEvent[0]);
+        },
+        addEvent: eventId => {
+          let eventCopy = { ...event };
+          let eventsCopy = [...events];
+          let selectedEventsCopy = [...selectedEvents];
+
+          if (eventCopy.id == eventId) {
+            eventCopy.attending = true;
+            setEvent(eventCopy);
+
+            let foundIndex = eventsCopy.findIndex(x => x.id == eventCopy.id);
+            eventsCopy[foundIndex] = eventCopy;
+            setEvents(eventsCopy);
+
+            selectedEventsCopy.push(eventCopy);
+            setSelectedEvents(selectedEventsCopy);
+          }
+        },
+        removeEvent: eventId => {
+          let eventCopy = { ...event };
+          let eventsCopy = [...events];
+          let selectedEventsCopy = [...selectedEvents];
+
+          if (eventCopy.id == eventId) {
+            eventCopy.attending = false;
+            setEvent(eventCopy);
+
+            let foundIndex = eventsCopy.findIndex(x => x.id == eventCopy.id);
+            eventsCopy[foundIndex] = eventCopy;
+            setEvents(eventsCopy);
+
+            let foundSelectedIndex = selectedEventsCopy.findIndex(
+              x => x.id == eventCopy.id
+            );
+            selectedEventsCopy.splice(foundSelectedIndex, 1);
+            setSelectedEvents(selectedEventsCopy);
+          }
         }
       }}
     >

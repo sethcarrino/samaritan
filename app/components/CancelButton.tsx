@@ -13,7 +13,7 @@ interface Props {
   onPress: () => void;
 }
 
-const Button: React.FC<Props> = ({ text, onPress }) => {
+const CancelButton: React.FC<Props> = ({ text, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text style={styles.text}>{text}</Text>
@@ -21,14 +21,14 @@ const Button: React.FC<Props> = ({ text, onPress }) => {
   );
 };
 
-type ButtonStyleSheet = {
+type CancelButtonStyleSheet = {
   container: ViewStyle;
   text: TextStyle;
 };
 
-const styles = StyleSheet.create<ButtonStyleSheet>({
+const styles = StyleSheet.create<CancelButtonStyleSheet>({
   container: {
-    backgroundColor: '#7F96FF',
+    backgroundColor: '#F25757',
     width: DEVICE_WIDTH - 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -50,4 +50,4 @@ const styles = StyleSheet.create<ButtonStyleSheet>({
   }
 });
 
-export default Button;
+export default CancelButton;

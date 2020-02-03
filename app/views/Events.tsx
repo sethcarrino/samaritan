@@ -108,13 +108,13 @@ const Events: React.FC<Props> = ({ navigation }) => {
   );
 };
 
-Events.navigationOptions = {
+Events.navigationOptions = navigation => ({
   headerRight: () => (
     <IconButton
       icon={Platform.OS === 'ios' ? 'ios-search' : 'md-search'}
       size={25}
       color='#000'
-      onPress={() => alert('This is a button!')}
+      onPress={() => navigation.navigation.navigate('Search')}
     />
   ),
   headerLeft: () => (
@@ -122,10 +122,10 @@ Events.navigationOptions = {
       icon={Platform.OS === 'ios' ? 'ios-heart-empty' : 'md-heart-empty'}
       size={25}
       color='#000'
-      onPress={() => alert('This is a button!')}
+      onPress={() => navigation.navigation.navigate('SelectedEvents')}
     />
   )
-};
+});
 
 type EventsStyleSheet = {
   container: ViewStyle;

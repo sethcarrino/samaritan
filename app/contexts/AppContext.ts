@@ -9,6 +9,8 @@ export interface AppContextInterface {
   event?: any;
   selectedEvents?: ObjectArray;
   getEvent?: (number) => void;
+  addEvent?: (number) => void;
+  removeEvent?: (number) => void;
 }
 
 const ctxt = React.createContext<AppContextInterface | null>({
