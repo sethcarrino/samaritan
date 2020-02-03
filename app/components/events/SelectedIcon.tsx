@@ -30,6 +30,4 @@ const SelectedIcon: React.FC<Props> = ({ selected, light }) => {
   return renderIcon();
 };
 
-const styles;
-
 export default SelectedIcon;

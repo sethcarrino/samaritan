@@ -50,7 +50,7 @@ const events = [
     description:
       "Lorem ipsum dolor amet squid tattooed pork belly taxidermy you probably haven't heard of them raclette succulents. Slow-carb lumbersexual PBR&B, truffaut food truck migas aesthetic literally tumeric raw denim squid enamel pin lo-fi cold-pressed. Tattooed put a bird on it tumeric mumblecore chillwave pok pok dreamcatcher la croix, stumptown fixie air plant post-ironic. Asymmetrical synth craft beer, pinterest flexitarian keffiyeh blog adaptogen schlitz hoodie flannel banh mi gluten-free. Selfies unicorn post-ironic brooklyn schlitz asymmetrical. Cardigan vice post-ironic selvage waistcoat trust fund messenger bag.",
     imageUrl:
-      'https://lh3.googleusercontent.com/proxy/4I_F2CCLrReOsWYwNofnX1gpcIB2mK4GhVdvLVbdsZEPav0RL2UllxfN8WOU4ewbqMDvy2sQHlofOAVdggZroZl6jY47eiURp74ckWLGhV0foxO9jS7QdB__9AyLyrxHevv-1yarvNQ2DC4DlSLi1iO829o0KVdI6RrA',
+      'https://secure.nationalmssociety.org/images/content/pagebuilder/HOM_2019_Walk_MS_-_Greeting_Page_Tile__4.jpg',
     address: {
       city: 'Cary',
       state: 'NC',
@@ -65,7 +65,7 @@ const events = [
     description:
       "Lorem ipsum dolor amet squid tattooed pork belly taxidermy you probably haven't heard of them raclette succulents. Slow-carb lumbersexual PBR&B, truffaut food truck migas aesthetic literally tumeric raw denim squid enamel pin lo-fi cold-pressed. Tattooed put a bird on it tumeric mumblecore chillwave pok pok dreamcatcher la croix, stumptown fixie air plant post-ironic. Asymmetrical synth craft beer, pinterest flexitarian keffiyeh blog adaptogen schlitz hoodie flannel banh mi gluten-free. Selfies unicorn post-ironic brooklyn schlitz asymmetrical. Cardigan vice post-ironic selvage waistcoat trust fund messenger bag.",
     imageUrl:
-      'https://lh3.googleusercontent.com/proxy/Tul79P_08AuHw9b9PkY1zsLg04ICQd2usYnn9dn0nA6YtdnihH9jXcTgJE5JIu8PwuYDQW2lSlstJ-5mbUzs6RjBUB0aLqSk76yaoYBilnImglaJ_MZA',
+      'https://bdn-data.s3.amazonaws.com/uploads/2019/04/26986723031_82f6424b74_o-720x445.jpg',
     address: {
       city: 'Cary',
       state: 'NC',
@@ -94,8 +94,7 @@ const events = [
     name: 'Fostering Footsteps for Bright Futures',
     description:
       "Lorem ipsum dolor amet squid tattooed pork belly taxidermy you probably haven't heard of them raclette succulents. Slow-carb lumbersexual PBR&B, truffaut food truck migas aesthetic literally tumeric raw denim squid enamel pin lo-fi cold-pressed. Tattooed put a bird on it tumeric mumblecore chillwave pok pok dreamcatcher la croix, stumptown fixie air plant post-ironic. Asymmetrical synth craft beer, pinterest flexitarian keffiyeh blog adaptogen schlitz hoodie flannel banh mi gluten-free. Selfies unicorn post-ironic brooklyn schlitz asymmetrical. Cardigan vice post-ironic selvage waistcoat trust fund messenger bag.",
-    imageUrl:
-      'https://lh3.googleusercontent.com/proxy/DOAdqVXLKlltT4iyeD_u9Un8CAhDnW2jaDWDH5TFFbwZ8BH5yQtmZAM8ktjetY5eXvIKq6tRpvYd8mGX1tJbLxUPr_dX1tO6e4WaYgN_1LO0qRYAgkA-1230VQqDD-jJHU9vEWVH_P4JAA',
+    imageUrl: 'https://llerrah.com/images6/footprintstop.jpg',
     address: {
       city: 'Cary',
       state: 'NC',

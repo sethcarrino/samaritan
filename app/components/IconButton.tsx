@@ -6,11 +6,21 @@ interface Props {
   icon: string;
   size: number;
   color: string;
+  noGutter?: boolean;
   onPress: () => void;
 }
 
-const IconButton: React.FC<Props> = ({ icon, size, color, onPress }) => (
-  <TouchableOpacity onPress={onPress} style={styles.container}>
+const IconButton: React.FC<Props> = ({
+  icon,
+  size,
+  color,
+  noGutter,
+  onPress
+}) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={{ marginHorizontal: noGutter ? 0 : 20 }}
+  >
     <Ionicons name={icon} size={size} color={color} />
   </TouchableOpacity>
 );
@@ -18,11 +28,5 @@ const IconButton: React.FC<Props> = ({ icon, size, color, onPress }) => (
 type IconButtonStyleSheet = {
   container: ViewStyle;
 };
-
-const styles = StyleSheet.create<IconButtonStyleSheet>({
-  container: {
-    marginHorizontal: 20
-  }
-});
 
 export default IconButton;

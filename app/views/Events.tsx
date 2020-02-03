@@ -1,5 +1,11 @@
 import React, { useContext } from 'react';
-import { Platform, SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
+import {
+  Platform,
+  SafeAreaView,
+  View,
+  StyleSheet,
+  ViewStyle
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import IconButton from '../components/IconButton';
 import SectionTitle from '../components/SectionTitle';
@@ -102,7 +108,17 @@ const Events: React.FC<Props> = ({ navigation }) => {
           {renderUpcomingEvents()}
         </ScrollView>
         <PaddedContainer top={25}>
-          <SectionTitle title='Event Listing' />
+          <View style={styles.sectionContainer}>
+            <SectionTitle title='Event Listing' />
+            <IconButton
+              icon={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+              size={25}
+              color='#000'
+              noGutter
+              onPress={() => alert('Hit')}
+            />
+          </View>
+
           {renderEvents()}
         </PaddedContainer>
       </ScrollView>
@@ -131,6 +147,7 @@ Events.navigationOptions = navigation => ({
 
 type EventsStyleSheet = {
   container: ViewStyle;
+  sectionContainer: ViewStyle;
   scrollView: ViewStyle;
   horizontalScrollView: ViewStyle;
 };
@@ -139,6 +156,12 @@ const styles = StyleSheet.create<EventsStyleSheet>({
   container: {
     flex: 1,
     backgroundColor: '#fff'
+  },
+  sectionContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   scrollView: {
     paddingVertical: 20
