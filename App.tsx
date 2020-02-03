@@ -10,6 +10,7 @@ import { EventsProvider } from './app/contexts/EventsContext';
 
 const dynamicDatedEvents = [];
 events.forEach((event: any, index: number) => {
+  // This for each makes sure the application always has future events
   let currentDate = moment();
   let futureMonth = moment(currentDate).add(index <= 3 ? 1 : index + 1, 'M');
   let futureMonthEnd = moment(futureMonth).endOf('month');

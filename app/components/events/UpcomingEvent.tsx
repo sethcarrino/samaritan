@@ -5,13 +5,16 @@ import {
   View,
   Text,
   StyleSheet,
-  ViewStyle
+  ViewStyle,
+  TextStyle
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import moment from 'moment';
 import { DEVICE_HEIGHT } from '../../styles/globals';
 
 interface Props {
   title: string;
-  date: string;
+  date: any;
   imageUrl: string;
   onPress: () => void;
   index: number;
@@ -26,12 +29,18 @@ const UpcomingEvent: React.FC<Props> = ({
 }) => (
   <TouchableOpacity
     onPress={onPress}
-    style={[styles.touchableContainer, { marginLeft: index > 0 ? 12 : 0 }]}
+    style={[styles.touchableContainer, { marginLeft: index > 0 ? 16 : 0 }]}
   >
     <ImageBackground style={styles.imageBackground} source={{ uri: imageUrl }}>
-      <View>
-        <Text>{title}</Text>
-      </View>
+      <LinearGradient
+        colors={['transparent', 'rgba(0,0,0,0.8)']}
+        style={styles.titleContainer}
+      >
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.date}>
+          {moment(date).format('ddd, MMM Do, YYYY')}
+        </Text>
+      </LinearGradient>
     </ImageBackground>
   </TouchableOpacity>
 );
@@ -39,6 +48,9 @@ const UpcomingEvent: React.FC<Props> = ({
 type UpcomingEventStyleSheet = {
   touchableContainer: ViewStyle;
   imageBackground: ViewStyle;
+  titleContainer: ViewStyle;
+  title: TextStyle;
+  date: TextStyle;
 };
 
 const styles = StyleSheet.create<UpcomingEventStyleSheet>({
@@ -46,7 +58,6 @@ const styles = StyleSheet.create<UpcomingEventStyleSheet>({
     height: DEVICE_HEIGHT / 3,
     width: DEVICE_HEIGHT / 3,
     marginVertical: 12,
-
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -54,7 +65,6 @@ const styles = StyleSheet.create<UpcomingEventStyleSheet>({
     },
     shadowOpacity: 0.4,
     shadowRadius: 3.25,
-
     elevation: 5
   },
   imageBackground: {
@@ -63,7 +73,24 @@ const styles = StyleSheet.create<UpcomingEventStyleSheet>({
     height: null,
     resizeMode: 'cover',
     borderRadius: 8,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    position: 'relative'
+  },
+  titleContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    padding: 10
+  },
+  title: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 16
+  },
+  date: {
+    color: '#fff',
+    fontSize: 12
   }
 });
 

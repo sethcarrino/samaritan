@@ -8,7 +8,18 @@ const AppNavigator = createStackNavigator(
     EventDetail: { screen: EventDetail }
   },
   {
-    headerMode: 'none'
+    initialRouteName: 'Events',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fff',
+        elevation: 0,
+        shadowColor: 'transparent'
+      },
+      headerTintColor: '#000',
+      headerTitleStyle: {
+        fontWeight: '600'
+      }
+    }
   }
 );
 

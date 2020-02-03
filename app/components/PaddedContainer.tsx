@@ -3,9 +3,12 @@ import { View, StyleSheet, ViewStyle } from 'react-native';
 
 interface Props {
   children: ReactNode;
+  top?: number;
 }
-const PaddedContainer: React.FC<Props> = ({ children }) => (
-  <View style={styles.container}>{children}</View>
+const PaddedContainer: React.FC<Props> = ({ children, top }) => (
+  <View style={[styles.container, { paddingTop: top ? top : 0 }]}>
+    {children}
+  </View>
 );
 
 type PaddedContainerStyleSheet = {
