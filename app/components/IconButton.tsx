@@ -7,7 +7,7 @@ interface Props {
   size: number;
   color: string;
   noGutter?: boolean;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 const IconButton: React.FC<Props> = ({
@@ -18,7 +18,7 @@ const IconButton: React.FC<Props> = ({
   onPress
 }) => (
   <TouchableOpacity
-    onPress={onPress}
+    onPress={onPress ? onPress : e => e.preventDefault()}
     style={{ marginHorizontal: noGutter ? 0 : 20 }}
   >
     <Ionicons name={icon} size={size} color={color} />

@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Platform,
   SafeAreaView,
   View,
+  Text,
   StyleSheet,
-  ViewStyle
+  ViewStyle,
+  TextStyle
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import IconButton from '../components/IconButton';
 import SectionTitle from '../components/SectionTitle';
 import PaddedContainer from '../components/PaddedContainer';
@@ -15,12 +17,16 @@ import Event from '../components/events/Event';
 
 // Events Context
 import AppContext, { AppContextInterface } from '../contexts/AppContext';
+import FilterModal from '../components/FilterModal';
 
 interface Props {
   navigation: any;
 }
 
 const Events: React.FC<Props> = ({ navigation }) => {
+  const [filterVisibility, setFilterVisibility] = useState(false);
+  const [filter, setFilter] = useState('');
+
   const renderUpcomingEvents = () => {
     // This function uses context to fetch events
     const ctxt = useContext(AppContext);
@@ -63,13 +69,22 @@ const Events: React.FC<Props> = ({ navigation }) => {
       // Sort events from newest to oldest
       // Grab first 3 events for latest upcoming events
       // Render UpcomingEvent component
-      return ctxt.events
-        .sort((a: any, b: any) => {
+      if (filter === 'asc') {
+        ctxt.events.sort((a: any, b: any) => {
+          return (
+            Math.abs(new Date(b.date).getTime()) -
+            Math.abs(new Date(a.date).getTime())
+          );
+        });
+      } else {
+        ctxt.events.sort((a: any, b: any) => {
           return (
             Math.abs(new Date(a.date).getTime()) -
             Math.abs(new Date(b.date).getTime())
           );
-        })
+        });
+      }
+      return ctxt.events
         .slice(Math.max(ctxt.events.length - 5, 1))
         .map((event, index) => (
           <Event
@@ -115,10 +130,39 @@ const Events: React.FC<Props> = ({ navigation }) => {
               size={25}
               color='#000'
               noGutter
-              onPress={() => alert('Hit')}
+              onPress={() => setFilterVisibility(!filterVisibility)}
             />
           </View>
-
+          {filterVisibility && (
+            <View style={styles.filterContainer}>
+              <TouchableOpacity
+                style={styles.filterIconContainer}
+                onPress={() => setFilter('desc')}
+              >
+                <IconButton
+                  icon={
+                    Platform.OS === 'ios' ? 'ios-arrow-down' : 'md-arrow-down'
+                  }
+                  size={25}
+                  color='#000'
+                  noGutter
+                />
+                <Text style={styles.filterText}>DESC</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.filterIconContainer}
+                onPress={() => setFilter('asc')}
+              >
+                <IconButton
+                  icon={Platform.OS === 'ios' ? 'ios-arrow-up' : 'md-arrow-up'}
+                  size={25}
+                  color='#000'
+                  noGutter
+                />
+                <Text style={styles.filterText}>ASC</Text>
+              </TouchableOpacity>
+            </View>
+          )}
           {renderEvents()}
         </PaddedContainer>
       </ScrollView>
@@ -148,6 +192,9 @@ Events.navigationOptions = navigation => ({
 type EventsStyleSheet = {
   container: ViewStyle;
   sectionContainer: ViewStyle;
+  filterContainer: ViewStyle;
+  filterIconContainer: ViewStyle;
+  filterText: TextStyle;
   scrollView: ViewStyle;
   horizontalScrollView: ViewStyle;
 };
@@ -162,6 +209,20 @@ const styles = StyleSheet.create<EventsStyleSheet>({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
+  },
+  filterContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingVertical: 12
+  },
+  filterIconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 16
+  },
+  filterText: {
+    fontSize: 12
   },
   scrollView: {
     paddingVertical: 20
