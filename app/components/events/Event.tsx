@@ -86,7 +86,8 @@ const styles = StyleSheet.create<EventStyleSheet>({
   },
   titleContainer: {
     padding: 10,
-    flex: 1
+    flex: 1,
+    paddingRight: 50
   },
   title: {
     fontWeight: '600',
