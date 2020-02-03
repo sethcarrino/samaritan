@@ -42,8 +42,8 @@ const App: React.FC = () => {
           setEvent(filteredEvent[0]);
         },
         addEvent: eventId => {
-          let eventCopy = { ...event };
-          let eventsCopy = [...events];
+          let eventCopy: any = { ...event };
+          let eventsCopy: any = [...events];
           let selectedEventsCopy = [...selectedEvents];
 
           if (eventCopy.id == eventId) {
@@ -59,8 +59,8 @@ const App: React.FC = () => {
           }
         },
         removeEvent: eventId => {
-          let eventCopy = { ...event };
-          let eventsCopy = [...events];
+          let eventCopy: any = { ...event };
+          let eventsCopy: any = [...events];
           let selectedEventsCopy = [...selectedEvents];
 
           if (eventCopy.id == eventId) {
