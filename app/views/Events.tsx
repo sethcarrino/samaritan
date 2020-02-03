@@ -1,13 +1,7 @@
 import React, { useContext } from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ViewStyle
-} from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import IconButton from '../components/IconButton';
 import SectionTitle from '../components/SectionTitle';
 import PaddedContainer from '../components/PaddedContainer';
 import UpcomingEvent from '../components/events/UpcomingEvent';
@@ -112,6 +106,25 @@ const Events: React.FC<Props> = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
+};
+
+Events.navigationOptions = {
+  headerRight: () => (
+    <IconButton
+      icon={Platform.OS === 'ios' ? 'ios-search' : 'md-search'}
+      size={25}
+      color='#000'
+      onPress={() => alert('This is a button!')}
+    />
+  ),
+  headerLeft: () => (
+    <IconButton
+      icon={Platform.OS === 'ios' ? 'ios-heart-empty' : 'md-heart-empty'}
+      size={25}
+      color='#000'
+      onPress={() => alert('This is a button!')}
+    />
+  )
 };
 
 type EventsStyleSheet = {

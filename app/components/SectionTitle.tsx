@@ -16,7 +16,7 @@ type SectionTitleStyleSheet = {
 const styles = StyleSheet.create<SectionTitleStyleSheet>({
   title: {
     textTransform: 'uppercase',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '600'
   }
 });

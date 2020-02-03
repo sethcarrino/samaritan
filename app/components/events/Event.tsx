@@ -68,7 +68,8 @@ const styles = StyleSheet.create<EventStyleSheet>({
     overflow: 'hidden'
   },
   titleContainer: {
-    padding: 10
+    padding: 10,
+    flex: 1
   },
   title: {
     fontWeight: '600',
