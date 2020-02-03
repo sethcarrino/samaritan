@@ -10,17 +10,28 @@ import {
   TextStyle
 } from 'react-native';
 import moment from 'moment';
+import SelectedIcon from './SelectedIcon';
 
 interface Props {
   title: string;
   date: string;
   imageUrl: string;
+  attending?: boolean;
   onPress: () => void;
   index: number;
 }
 
-const Event: React.FC<Props> = ({ title, date, imageUrl, onPress }) => (
+const Event: React.FC<Props> = ({
+  title,
+  date,
+  imageUrl,
+  attending,
+  onPress
+}) => (
   <TouchableOpacity onPress={onPress} style={styles.touchableContainer}>
+    <View style={styles.iconContainer}>
+      <SelectedIcon selected={attending} />
+    </View>
     <Image style={styles.image} source={{ uri: imageUrl }} />
     <View style={styles.titleContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -33,6 +44,7 @@ const Event: React.FC<Props> = ({ title, date, imageUrl, onPress }) => (
 
 type EventStyleSheet = {
   touchableContainer: ViewStyle;
+  iconContainer: ViewStyle;
   image: ImageStyle;
   titleContainer: ViewStyle;
   title: TextStyle;
@@ -58,6 +70,11 @@ const styles = StyleSheet.create<EventStyleSheet>({
     shadowRadius: 2,
 
     elevation: 5
+  },
+  iconContainer: {
+    position: 'absolute',
+    right: 10,
+    top: 10
   },
   image: {
     width: 125,

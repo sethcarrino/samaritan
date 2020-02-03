@@ -36,6 +36,7 @@ const Events: React.FC<Props> = ({ navigation }) => {
             title={event.name}
             date={event.date}
             imageUrl={event.imageUrl}
+            attending={event.attending}
             onPress={() =>
               navigation.navigate('EventDetail', {
                 eventId: event.id
@@ -69,6 +70,7 @@ const Events: React.FC<Props> = ({ navigation }) => {
             title={event.name}
             date={event.date}
             imageUrl={event.imageUrl}
+            attending={event.attending}
             onPress={() =>
               navigation.navigate('EventDetail', {
                 eventId: event.id

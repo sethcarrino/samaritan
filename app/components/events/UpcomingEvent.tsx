@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Platform,
   TouchableOpacity,
   ImageBackground,
   View,
@@ -9,13 +10,16 @@ import {
   TextStyle
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { DEVICE_HEIGHT } from '../../styles/globals';
+import SelectedIcon from './SelectedIcon';
 
 interface Props {
   title: string;
   date: any;
   imageUrl: string;
+  attending: boolean;
   onPress: () => void;
   index: number;
 }
@@ -24,6 +28,7 @@ const UpcomingEvent: React.FC<Props> = ({
   title,
   date,
   imageUrl,
+  attending,
   onPress,
   index
 }) => (
@@ -32,6 +37,9 @@ const UpcomingEvent: React.FC<Props> = ({
     style={[styles.touchableContainer, { marginLeft: index > 0 ? 16 : 0 }]}
   >
     <ImageBackground style={styles.imageBackground} source={{ uri: imageUrl }}>
+      <View style={styles.iconContainer}>
+        <SelectedIcon selected={attending} light />
+      </View>
       <LinearGradient
         colors={['transparent', 'rgba(0,0,0,0.8)']}
         style={styles.titleContainer}
@@ -48,6 +56,7 @@ const UpcomingEvent: React.FC<Props> = ({
 type UpcomingEventStyleSheet = {
   touchableContainer: ViewStyle;
   imageBackground: ViewStyle;
+  iconContainer: ViewStyle;
   titleContainer: ViewStyle;
   title: TextStyle;
   date: TextStyle;
@@ -65,7 +74,8 @@ const styles = StyleSheet.create<UpcomingEventStyleSheet>({
     },
     shadowOpacity: 0.4,
     shadowRadius: 3.25,
-    elevation: 5
+    elevation: 5,
+    position: 'relative'
   },
   imageBackground: {
     flex: 1,
@@ -75,6 +85,11 @@ const styles = StyleSheet.create<UpcomingEventStyleSheet>({
     borderRadius: 8,
     overflow: 'hidden',
     position: 'relative'
+  },
+  iconContainer: {
+    position: 'absolute',
+    right: 10,
+    top: 10
   },
   titleContainer: {
     position: 'absolute',
