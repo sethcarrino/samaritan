@@ -1,4 +1,3 @@
-// __tests__/App-test.js
 import React from 'react';
 import Button from '../app/components/Button';
 

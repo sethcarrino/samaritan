@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FixedContainer/> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderTopColor": "lightgrey",
+      "borderTopWidth": 1,
+      "bottom": 0,
+      "height": 120,
+      "justifyContent": "center",
+      "position": "absolute",
+      "width": 750,
+    }
+  }
+/>
+`;
