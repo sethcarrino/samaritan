@@ -14,7 +14,7 @@ import UpcomingEvent from '../components/events/UpcomingEvent';
 import Event from '../components/events/Event';
 
 // Events Context
-import EventsContext from '../contexts/EventsContext';
+import AppContext, { AppContextInterface } from '../contexts/AppContext';
 
 interface Props {
   navigation: any;
@@ -23,17 +23,17 @@ interface Props {
 const Events: React.FC<Props> = ({ navigation }) => {
   const renderUpcomingEvents = () => {
     // This function uses context to fetch events
-    const events = useContext(EventsContext) || [];
+    const ctxt = useContext(AppContext);
     // Conditional for checking if any events exist
-    if (events.length > 0) {
+    if (ctxt.events.length > 0) {
       // Sort events from newest to oldest
       // Grab first 3 events for latest upcoming events
       // Render UpcomingEvent component
-      return events
+      return ctxt.events
         .sort((a: any, b: any) => {
           return (
-            Math.abs(new Date(b.date).getTime()) -
-            Math.abs(new Date(a.date).getTime())
+            Math.abs(new Date(a.date).getTime()) -
+            Math.abs(new Date(b.date).getTime())
           );
         })
         .slice(0, 3)
@@ -42,7 +42,11 @@ const Events: React.FC<Props> = ({ navigation }) => {
             title={event.name}
             date={event.date}
             imageUrl={event.imageUrl}
-            onPress={() => navigation.navigate('EventDetail')}
+            onPress={() =>
+              navigation.navigate('EventDetail', {
+                eventId: event.id
+              })
+            }
             index={index}
             key={event.id}
           />
@@ -53,25 +57,29 @@ const Events: React.FC<Props> = ({ navigation }) => {
 
   const renderEvents = () => {
     // This function uses context to fetch events
-    const events = useContext(EventsContext) || [];
-    if (events.length > 0) {
+    const ctxt: AppContextInterface = useContext(AppContext);
+    if (ctxt.events.length > 0) {
       // Sort events from newest to oldest
       // Grab first 3 events for latest upcoming events
       // Render UpcomingEvent component
-      return events
+      return ctxt.events
         .sort((a: any, b: any) => {
           return (
-            Math.abs(new Date(b.date).getTime()) -
-            Math.abs(new Date(a.date).getTime())
+            Math.abs(new Date(a.date).getTime()) -
+            Math.abs(new Date(b.date).getTime())
           );
         })
-        .slice(Math.max(events.length - 5, 1))
+        .slice(Math.max(ctxt.events.length - 5, 1))
         .map((event, index) => (
           <Event
             title={event.name}
             date={event.date}
             imageUrl={event.imageUrl}
-            onPress={() => navigation.navigate('EventDetail')}
+            onPress={() =>
+              navigation.navigate('EventDetail', {
+                eventId: event.id
+              })
+            }
             index={index}
             key={event.id}
           />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import {
   ScrollView,
   StatusBar,
@@ -12,12 +12,23 @@ import {
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from '../styles/globals';
 import BackButton from '../components/BackButton';
 
+// Context
+import AppContext, { AppConsumer } from '../contexts/AppContext';
+
 interface Props {
   navigation: any;
   navigationOptions?: Object;
 }
 
 const EventDetail: React.FC<Props> = ({ navigation }) => {
+  const ctxt = useContext(AppContext);
+
+  useEffect(() => {
+    let eventId = JSON.stringify(navigation.getParam('eventId'));
+    ctxt.getEvent(eventId);
+    console.log(ctxt.event);
+  }, []);
+
   return (
     <>
       <StatusBar barStyle='light-content' />
@@ -33,7 +44,7 @@ const EventDetail: React.FC<Props> = ({ navigation }) => {
         </ImageBackground>
         <View style={styles.roundedContainer}>
           <ScrollView contentContainerStyle={styles.scrollView}>
-            <Text style={styles.title}>Event Title</Text>
+            <Text style={styles.title}>{ctxt.event.name}</Text>
           </ScrollView>
         </View>
       </View>
@@ -42,7 +53,7 @@ const EventDetail: React.FC<Props> = ({ navigation }) => {
 };
 
 EventDetail.navigationOptions = {
-  header: null
+  headerShown: false
 };
 
 type EventDetailStyleSheet = {

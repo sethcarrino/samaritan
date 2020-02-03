@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import events from './app/data/events';
 
@@ -6,7 +6,7 @@ import events from './app/data/events';
 import RootNavigator from './app/navigation/RootNavigator';
 
 // App Provide from the Context API
-import { EventsProvider } from './app/contexts/EventsContext';
+import { AppProvider } from './app/contexts/AppContext';
 
 const dynamicDatedEvents = [];
 events.forEach((event: any, index: number) => {
@@ -27,10 +27,24 @@ events.forEach((event: any, index: number) => {
 });
 
 const App: React.FC = () => {
+  const [events] = useState(dynamicDatedEvents);
+  const [event, setEvent] = useState({});
+  const [selectedEvents] = useState([]);
+
   return (
-    <EventsProvider value={dynamicDatedEvents}>
+    <AppProvider
+      value={{
+        events,
+        event,
+        selectedEvents,
+        getEvent: eventId => {
+          let filteredEvent = events.filter(e => e.id == eventId);
+          setEvent(filteredEvent[0]);
+        }
+      }}
+    >
       <RootNavigator />
-    </EventsProvider>
+    </AppProvider>
   );
 };
 
