@@ -108,20 +108,20 @@ const EventDetail: React.FC<Props> = ({ navigation }) => {
                 <Text style={styles.description}>{ctxt.event.description}</Text>
               </ScrollView>
             </View>
-            <FixedContainer>
-              {ctxt.event.attending ? (
-                <CancelButton
-                  text={'Unattend Event'}
-                  onPress={() => ctxt.removeEvent(ctxt.event.id)}
-                />
-              ) : (
-                <Button
-                  text={'Attend Event'}
-                  onPress={() => ctxt.addEvent(ctxt.event.id)}
-                />
-              )}
-            </FixedContainer>
           </View>
+          <FixedContainer>
+            {ctxt.event.attending ? (
+              <CancelButton
+                text={'Unattend Event'}
+                onPress={() => ctxt.removeEvent(ctxt.event.id)}
+              />
+            ) : (
+              <Button
+                text={'Attend Event'}
+                onPress={() => ctxt.addEvent(ctxt.event.id)}
+              />
+            )}
+          </FixedContainer>
         </>
       )}
     </>

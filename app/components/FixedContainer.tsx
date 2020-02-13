@@ -17,6 +17,9 @@ type FixedContainerStyleSheet = {
 const styles = StyleSheet.create<FixedContainerStyleSheet>({
   fixedContainer: {
     position: 'absolute',
+    elevation: 1,
+    left: 0,
+    right: 0,
     bottom: 0,
     height: 120,
     width: DEVICE_WIDTH,
